@@ -1,5 +1,6 @@
 <h1>Movies</h1>
 <%= link_to 'Add movie', new_movie_path  %>
+<%= link_to 'Add genre', new_genre_path  %>
 
 <table>
   <thead>
@@ -18,7 +19,7 @@
     <% @movies.each do |movie| %>
     <tr>
       <td><%= movie.name %></td>
-      <td><%= movie.length %></td>
+      <td><%= movie.length %> minutes</td>
       <td><%= movie.genre %></td>
       <td><%= movie.director %></td>
       <td><%= movie.country %></td>

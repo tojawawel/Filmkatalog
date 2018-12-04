@@ -6,11 +6,11 @@
 </p>
 <p>
   <strong>Release date:</strong>
-  <%= @movie.premiere_date %>
+  <%= @movie.premiere_date.strftime("%d.%m.%Y") %>
 </p>
 <p>
   <strong>Length:</strong>
-  <%= @movie.length %>
+  <%= @movie.length %> minutes
 </p>
 <p>
   <strong>Genre:</strong>
