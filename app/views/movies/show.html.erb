@@ -32,3 +32,7 @@
   <strong>Description</strong>
   <%= @movie.description %>
 </p>
+
+<%= link_to 'Back to all movies', movies_path  %>
+<%= link_to 'Edit this movie', edit_movie_path(@movie)  %>
+<%= link_to 'Delete this movie', movie_path(@movie), method: :delete, data: {confirm: "You sure?"} %>
