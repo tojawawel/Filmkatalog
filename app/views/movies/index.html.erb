@@ -1,4 +1,5 @@
 <h1>Movies</h1>
+<%= link_to 'Add movie', new_movie_path  %>
 
 <table>
   <thead>
@@ -21,7 +22,7 @@
       <td><%= movie.genre %></td>
       <td><%= movie.director %></td>
       <td><%= movie.country %></td>
-      <td><%= link_to 'Show', movies_path(movie)%></td>
+      <td><%= link_to 'Poka', movie_path(movie) %></td>
       <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
       <td><%= link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"} %></td>
     </tr>
