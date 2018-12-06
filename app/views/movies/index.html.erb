@@ -22,7 +22,7 @@
       <td><%= movie.length %> minutes</td>
       <td><%= movie.genre %></td>
       <td><%= movie.director %></td>
-      <td><%= movie.country %></td>
+      <td><%= movie.country_name %></td>
       <td><%= link_to 'Poka', movie_path(movie) %></td>
       <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
       <td><%= link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"} %></td>

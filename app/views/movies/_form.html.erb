@@ -1,11 +1,11 @@
 <%= simple_form_for @movie do |f| %>
-  <p><%= f.input :name, required: false, label: 'Your username please' %></p>
+  <p><%= f.input :name, required: false %></p>
   <p><%= f.input :premiere_date, start_year: 1895, required: false  %></p>
-  <p><%= f.input :length, required: false %></p>
-  <p><%= f.input :genre, collection: Genre.all, include_blank: false, required: false %></p>
+  <p><%= f.input :length, input_html: { min: 0},required: false %></p>
   <p><%= f.input :director, required: false %></p>
+  <p><%= f.input :genre, as: :radio_buttons, collection: Genre.order(:name), value_method: :name, include_blank: false %></p>
   <p><%= f.input :scenarist, required: false %></p>
-  <p><%= f.input :country, required: false, label: 'Country' %></p>
+  <p><%= f.input :country, required: false %></p>
   <p><%= f.input :description, required: false %></p>
   <p><%= f.submit %></p>
 <% end %>
