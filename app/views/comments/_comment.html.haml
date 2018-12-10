@@ -1,0 +1,8 @@
+- @movie.comments.each do |comment|
+  %h3= comment.author
+  %h4= comment.created_at.strftime("%m/%d/%y %H:%M")
+  %h4= comment.rate
+  %p= simple_format(comment.body)
+  = link_to "Delete", movie_comment_path(movie_id: comment.movie_id, id: comment.id), method: :delete, data: {confirm: "Pewniak?"}
+  = link_to 'Edit', edit_movie_comment_path(movie_id: comment.movie.id, id: comment.id)
+  %br/
