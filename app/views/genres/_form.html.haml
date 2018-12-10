@@ -1,3 +1,7 @@
-= simple_form_for @genre do |f|
-  %p= f.input :name
-  %p= f.submit
+.container
+  .col-3.offset-4
+    %br
+    %h1.text-center Add genre
+    = simple_form_for @genre do |f|
+      %p= f.input :name,required: false, error: false
+      %p= f.submit

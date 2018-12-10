@@ -1,10 +1,12 @@
-%h2 Comments
-= render 'common/errors', model: @comment
-= simple_form_for [@movie, @comment] do |f|
-  %p= f.input :movie_id, :as => :hidden, required: false
-  %p
-    = f.input :author, placeholder:"Wprowadź nick", required: false, error: false
-  %p
-    = f.input :rate, input_html: { min: 0, max: 10},required: false, error: false
-  %p= f.input :body, placeholder:"Tekst....", required: false, error: false
-  %p= f.submit
+.container
+  .col-3.offset-4
+    %h2 Comments
+    = render 'common/errors', model: @comment
+    = simple_form_for [@movie, @comment] do |f|
+      %p= f.input :movie_id, :as => :hidden, required: false
+      %p
+        = f.input :author, placeholder:"Wprowadź nick", required: false, error: false, label: false
+      %p
+        = f.input :rate, placeholder:"Ocena 1-10", input_html: { min: 0, max: 10},required: false, error: false,label: false
+      %p= f.input :body, placeholder:"Tekst....", required: false, error: false,label: false
+      %p= f.submit

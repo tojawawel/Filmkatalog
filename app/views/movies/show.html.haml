@@ -1,34 +1,35 @@
-%h1 My article
-
-%p
-  %strong Title:
-  = @movie.name
-%p
-  %strong Release date:
-  = @movie.premiere_date.strftime("%d.%m.%Y")
-%p
-  %strong Length:
-  = @movie.length
-  minutes
-%p
-  %strong Genre:
-  = @movie.genre
-%p
-  %strong Director:
-  = @movie.director
-%p
-  %strong Scenarist:
-  = @movie.scenarist
-%p
-  %strong Country:
-  = @movie.country_name
-%p
-  %strong Description
-  = @movie.description
-
-=render 'comments/form'
-=render 'comments/comment'
-
-= link_to 'Back to all movies', movies_path
-= link_to 'Edit this movie', edit_movie_path(@movie)
-= link_to 'Delete this movie', movie_path(@movie), method: :delete
+%br
+  .container
+    .col-12
+      .card
+        %h3.card-header.text-center
+          = @movie.name
+        .card-body
+          %p.card-text
+            %strong Release date:
+            = @movie.premiere_date.strftime("%d.%m.%Y")
+          %p.card-text
+            %strong Length:
+            = @movie.length
+            minutes
+          %p.card-text
+            %strong Genre:
+            = @movie.genre
+          %p.card-text
+            %strong Director:
+            = @movie.director
+          %p.card-text
+            %strong Scenarist:
+            = @movie.scenarist
+          %p
+            %strong Country:
+            = @movie.country_name
+          %p.card-text
+            %strong Description
+            = @movie.description
+          %a= link_to 'Back to all movies', movies_path, class: "btn btn-info"
+          %a=link_to 'Edit this movie', edit_movie_path(@movie), class: "btn btn-primary"
+          %a=link_to 'Delete this movie', movie_path(@movie), method: :delete, class: "btn btn-danger"
+%br
+  =render 'comments/comment'
+  =render 'comments/form'

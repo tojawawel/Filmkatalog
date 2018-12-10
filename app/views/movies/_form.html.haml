@@ -1,12 +1,29 @@
 = render 'common/errors', model: @movie
-
-= simple_form_for @movie do |f|
-  %p=f.input :name, required: false, error: false
-  %p=f.input :premiere_date, start_year: 1895, required: false, error: false
-  %p=f.input :length, input_html: { min: 0},required: false, error: false
-  %p=f.input :director, required: false, error: false
-  %p=f.input :genre, as: :radio_buttons, collection: Genre.order(:name), value_method: :name, include_blank: false, error: false
-  %p=f.input :scenarist, required: false, error: false
-  %p=f.input :country, required: false, error: false
-  %p=f.input :description, required: false, error: false
-  %p=f.submit
+.container
+  .col-5.offset-3
+    %br
+    %h1.text-center Add movie
+    = simple_form_for @movie do |f|
+      %form
+        .row
+          .form-group.col-6
+            %p=f.input :name, required: false, error: false
+        .row
+          .form-group.col-12
+            %p=f.input :premiere_date, start_year: 1895, required: false, error: false
+        .row
+          .form-group.col-3
+            %p=f.input :length, input_html: { min: 0},required: false, error: false
+        .row
+          .col
+            =f.input :director, required: false, error: false
+          .col
+            =f.input :scenarist, required: false, error: false
+        %p=f.input :genre, as: :radio_buttons, collection: Genre.order(:name), value_method: :name, include_blank: false, error: false
+        .row
+          .form-group.col-6
+            %p=f.input :country, required: false, error: false
+        .row
+          .form-group.col-12
+            %p=f.input :description, required: false, error: false
+        %p=f.submit

@@ -1,30 +1,30 @@
-%h1 Movies
-= link_to 'Add movie', new_movie_path
-= link_to 'Add genre', new_genre_path
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Length
-      %th Genre
-      %th Director
-      %th Country
-      %th Rate
-      %th
-      %th
-      %th
-  %tbody
-    - @movies.each do |movie|
+%br
+%h1.text-center Movies
+%br
+.container
+  %table.table.table-hover.table-bordered
+    %thead
       %tr
-        %td= movie.name
-        %td
-          =movie.length
-          minutes
-        %td= movie.genre
-        %td= movie.director
-        %td= movie.country_name
-        %td= sprintf('%.1f', movie.comments.average(:rate).to_i)
-        %td= link_to 'Poka', movie_path(movie)
-        %td= link_to 'Edit', edit_movie_path(movie)
-        %td= link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"}
+        %th.text-center Title
+        %th.text-center Length
+        %th.text-center Genre
+        %th.text-center Director
+        %th.text-center Country
+        %th.text-center Rate
+        %th.text-center Actions
+    %tbody
+      - @movies.each do |movie|
+        %tr
+          %td.text-center= movie.name
+          %td.text-center
+            =movie.length
+            minutes
+          %td.text-center= movie.genre
+          %td.text-center= movie.director
+          %td.text-center= movie.country_name
+          %td.text-center= sprintf('%.1f', movie.comments.average(:rate).to_i)
+          %td.text-center
+            .btn-group{"aria-label" => "Basic example", role: "group"}
+              =link_to 'Show movie', movie_path(movie), :class => "button btn btn-info"
+              =link_to 'Edit movie', edit_movie_path(movie), :class => "button btn btn-primary"
+              =link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"},:class => "button btn btn-danger"
