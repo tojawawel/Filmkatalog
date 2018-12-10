@@ -1,0 +1,6 @@
+%body
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-dark
+    %a=link_to 'Movies', movies_path, :class => "navbar-brand"
+    %ul.navbar-nav.mr-auto
+      %a=link_to 'Create genre', new_genre_path, class: 'nav-link'
+      %a=link_to 'Create movie',  new_movie_path, class: 'nav-link'
