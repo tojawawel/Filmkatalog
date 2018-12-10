@@ -1,0 +1,12 @@
+= render 'common/errors', model: @movie
+
+= simple_form_for @movie do |f|
+  %p=f.input :name, required: false, error: false
+  %p=f.input :premiere_date, start_year: 1895, required: false, error: false
+  %p=f.input :length, input_html: { min: 0},required: false, error: false
+  %p=f.input :director, required: false, error: false
+  %p=f.input :genre, as: :radio_buttons, collection: Genre.order(:name), value_method: :name, include_blank: false, error: false
+  %p=f.input :scenarist, required: false, error: false
+  %p=f.input :country, required: false, error: false
+  %p=f.input :description, required: false, error: false
+  %p=f.submit

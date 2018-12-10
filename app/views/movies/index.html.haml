@@ -1,0 +1,30 @@
+%h1 Movies
+= link_to 'Add movie', new_movie_path
+= link_to 'Add genre', new_genre_path
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Length
+      %th Genre
+      %th Director
+      %th Country
+      %th Rate
+      %th
+      %th
+      %th
+  %tbody
+    - @movies.each do |movie|
+      %tr
+        %td= movie.name
+        %td
+          =movie.length
+          minutes
+        %td= movie.genre
+        %td= movie.director
+        %td= movie.country_name
+        %td= sprintf('%.1f', movie.comments.average(:rate).to_i)
+        %td= link_to 'Poka', movie_path(movie)
+        %td= link_to 'Edit', edit_movie_path(movie)
+        %td= link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"}

@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
   validates :country ,presence: true
   validates :description ,presence: true, length: { minimum:1}
 
-  has_many :genres
+  has_many :comments, dependent: :destroy
     def country_name
       iso_country = ISO3166::Country[country] # `country` should be code like 'AU'
       iso_country.translations[I18n.locale.to_s] || iso_country.name

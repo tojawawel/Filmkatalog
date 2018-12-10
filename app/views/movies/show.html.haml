@@ -1,0 +1,34 @@
+%h1 My article
+
+%p
+  %strong Title:
+  = @movie.name
+%p
+  %strong Release date:
+  = @movie.premiere_date.strftime("%d.%m.%Y")
+%p
+  %strong Length:
+  = @movie.length
+  minutes
+%p
+  %strong Genre:
+  = @movie.genre
+%p
+  %strong Director:
+  = @movie.director
+%p
+  %strong Scenarist:
+  = @movie.scenarist
+%p
+  %strong Country:
+  = @movie.country_name
+%p
+  %strong Description
+  = @movie.description
+
+=render 'comments/form'
+=render 'comments/comment'
+
+= link_to 'Back to all movies', movies_path
+= link_to 'Edit this movie', edit_movie_path(@movie)
+= link_to 'Delete this movie', movie_path(@movie), method: :delete
