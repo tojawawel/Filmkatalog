@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
 gem 'country_select'
+gem 'haml'
 
 
 group :development, :test do
