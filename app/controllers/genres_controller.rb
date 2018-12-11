@@ -12,6 +12,7 @@ class GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     if @genre.save
       redirect_to movies_path
+      flash[:warning] = 'Genre added'
     else
       render 'new'
     end

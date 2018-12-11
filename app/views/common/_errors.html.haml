@@ -1,9 +1,9 @@
 - if model.errors.any?
-  #error_explanation.alert.alert-danger{role: "alert"}
-    %h4.alert-heading
-      = pluralize(model.errors.count, 'error')
-      prohibited this article from being save:
-    %hr/
-    %ul
-      - model.errors.full_messages.each do |msg|
-        %li= msg
+  .card{:style => "width: 34rem;"}
+    .card-body
+      %h3.card-title
+        = pluralize(model.errors.count, "error")
+        prohibited this article from being saved:
+      %ul
+        - model.errors.full_messages.each do |msg|
+          %li=msg

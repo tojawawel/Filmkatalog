@@ -1,7 +1,10 @@
 .container
-  .col-3.offset-4
-    %h2 Comments
+  .col-3.offset-3
     = render 'common/errors', model: @comment
+    %br
+.container
+  .col-3.offset-4
+    %h2 Add comment
     = simple_form_for [@movie, @comment] do |f|
       %p= f.input :movie_id, :as => :hidden, required: false
       %p
