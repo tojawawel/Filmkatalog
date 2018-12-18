@@ -3,6 +3,11 @@
     %a=link_to 'Movies', movies_path, :class => "navbar-brand"
     %ul.navbar-nav.mr-auto
       %a=link_to 'Create movie',  new_movie_path, class: 'nav-link'
+      = form_tag movies_path, method: :get do
+        .input-group
+          = text_field_tag :term, params[:term]
+          %span.input-group-btn
+            = submit_tag "Search", name:nil, class: "btn btn-default"
       -if current_user.try(:admin?)
         %a=link_to 'Create genre', new_genre_path, class: 'nav-link'
     %ul.navbar-nav.ml-auto

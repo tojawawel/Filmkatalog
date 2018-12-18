@@ -1,8 +1,9 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[show edit update destroy require_same_user]
   before_action :require_same_user, only: %i[edit update destroy]
+
   def index
-    @movies = Movie.all
+    @movies = Movie.search(params[:term])
   end
 
   def new
@@ -45,7 +46,7 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    movie_params = params.require(:movie).permit(:name, :premiere_date, :length, :description, :genre, :director, :scenarist, :country)
+    movie_params = params.require(:movie).permit(:name, :premiere_date, :length, :description, :genre, :director, :scenarist, :country, :term)
   end
 
   def set_movie
@@ -58,5 +59,4 @@ class MoviesController < ApplicationController
       redirect_to root_path
     end
   end
-
 end
