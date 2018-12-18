@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[show edit update destroy require_same_user]
   before_action :require_same_user, only: %i[edit update destroy]
-  before_action :authenticate_user!, only: %i[edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
     @movies = Movie.search(params[:term])
