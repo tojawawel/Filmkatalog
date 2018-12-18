@@ -2,7 +2,8 @@
   %nav.navbar.navbar-expand-lg.navbar-light.bg-info
     %a=link_to 'Movies', movies_path, :class => "navbar-brand"
     %ul.navbar-nav.mr-auto
-      %a=link_to 'Create movie',  new_movie_path, class: 'nav-link'
+      - if user_signed_in?
+        %a=link_to 'Create movie',  new_movie_path, class: 'nav-link'
       = form_tag movies_path, method: :get do
         .input-group
           = text_field_tag :term, params[:term]
