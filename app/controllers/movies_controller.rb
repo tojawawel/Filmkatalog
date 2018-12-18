@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only:[:show,:edit,:update,:destroy]
+  before_action :set_movie, only: %i[show edit update destroy require_same_user]
+  before_action :require_same_user, only: %i[edit update destroy]
   def index
     @movies = Movie.all
   end
@@ -10,6 +11,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    @movie.user = current_user
     if @movie.save
       flash[:success] = 'Movie was successfully created'
       redirect_to movie_path(@movie)
@@ -48,6 +50,13 @@ class MoviesController < ApplicationController
 
   def set_movie
     @movie = Movie.find(params[:id])
+  end
+
+  def require_same_user
+    unless current_user.admin? || current_user == @movie.user
+      flash[:danger] = 'You can only edit or delete your own articles!'
+      redirect_to root_path
+    end
   end
 
 end

@@ -1,0 +1,15 @@
+.container
+  .col-3.offset-4
+    - @movie.comments.each do |comment|
+      .card.text-center
+        .card-body
+          %h5.card-title= comment.user.full_name
+          %h4
+          Rate:
+          = comment.rate
+          %p.card-text= simple_format(comment.body)
+          %h6.card-subtitle.mb-2.text-muted= comment.created_at.strftime("%m/%d/%y %H:%M")
+          -if current_user == @movie.user || current_user.try(:admin?)
+            %a.card-link=link_to "Delete", movie_comment_path(movie_id: comment.movie_id, id: comment.id), method: :delete, data: {confirm: "Pewniak?"}, class: "btn btn-danger"
+            %a.card-link=link_to 'Edit', edit_movie_comment_path(movie_id: comment.movie.id, id: comment.id), class: "btn btn-primary"
+      %br

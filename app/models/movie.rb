@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
   validates :name ,presence: true, uniqueness: true
   validates :premiere_date ,presence: true
   validates :length ,presence: true, numericality: { greater_than:0,  only_integer: true }

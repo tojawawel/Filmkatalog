@@ -26,5 +26,6 @@
           %td.text-center
             .btn-group{"aria-label" => "Basic example", role: "group"}
               =link_to 'Show movie', movie_path(movie), :class => "button btn btn-info"
-              =link_to 'Edit movie', edit_movie_path(movie), :class => "button btn btn-primary"
-              =link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"},:class => "button btn btn-danger"
+              -if current_user == movie.user || current_user.try(:admin?)
+                =link_to 'Edit movie', edit_movie_path(movie), :class => "button btn btn-primary"
+                =link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"},:class => "button btn btn-danger"
