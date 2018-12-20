@@ -1,0 +1,28 @@
+%br
+%h1.text-center Movies
+%br
+.container
+  %table.table.table-hover.table-bordered
+    %thead
+      %tr
+        %th.text-center Title
+        %th.text-center Length
+        %th.text-center Genre
+        %th.text-center Director
+        %th.text-center Country
+        %th.text-center Rate
+        %th.text-center Actions
+    %tbody
+      - @favourites.each do |fav|
+        %tr
+          %td.text-center= fav.movie.name
+          %td.text-center
+            =fav.movie.length
+            minutes
+          %td.text-center= fav.movie.genre
+          %td.text-center= fav.movie.director
+          %td.text-center= fav.movie.country_name
+          %td.text-center= sprintf('%.1f', fav.movie.comments.average(:rate).to_i)
+          %td.text-center
+            .btn-group{"aria-label" => "Basic example", role: "group"}
+              =link_to 'Show movie', movie_path(fav.movie), :class => "button btn btn-info"

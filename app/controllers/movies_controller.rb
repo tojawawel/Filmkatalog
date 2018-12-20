@@ -25,6 +25,7 @@ class MoviesController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.all
+    @favourite_exists = Favourite.where(movie: @movie, user: current_user).empty? ? false : true
   end
 
   def edit

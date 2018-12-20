@@ -3,7 +3,8 @@
     %a=link_to 'Movies', movies_path, :class => "navbar-brand"
     %ul.navbar-nav.mr-auto
       - if user_signed_in?
-        %a=link_to 'Create movie',  new_movie_path, class: 'nav-link'
+        %a=link_to 'Create movie', new_movie_path, class: 'nav-link'
+        %a=link_to 'Favourites', favourites_path, class: 'nav-link'
       = form_tag movies_path, method: :get do
         .input-group
           = text_field_tag :term, params[:term]
@@ -13,7 +14,13 @@
         %a=link_to 'Create genre', new_genre_path, class: 'nav-link'
     %ul.navbar-nav.ml-auto
       - if user_signed_in?
-        %a=link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link'
+        %li.nav-item.dropdown
+          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+            = current_user.first_name
+            's actions
+          .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+            %a=link_to 'Edit your account', edit_user_registration_path, class: 'dropdown-item'
+            %a=link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
       - else
         %a=link_to 'Log in', new_user_session_path, class: 'nav-link'
         %a=link_to 'Sign up', new_user_registration_path, class: 'nav-link'
