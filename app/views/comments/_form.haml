@@ -1,13 +1,6 @@
-.container
-  .col-3.offset-3
-    = render 'common/errors', model: @comment
-    %br
-.container
-  .col-3.offset-4
-    %h2 Add comment
-    = simple_form_for [@movie, @comment] do |f|
-      %p= f.input :movie_id, :as => :hidden, required: false
-      %p
-        = f.input :rate, placeholder:"Ocena 1-10", input_html: { min: 0, max: 10, class: 'custom-range'},required: false, error: false,label: false, as: :range
-      %p= f.input :body, placeholder:"Tekst....", required: false, error: false,label: false
-      %p= f.submit
+= simple_form_for [@movie, @comment] do |f|
+  %p= f.input :movie_id, :as => :hidden, required: false
+  %p
+    = f.input :rate, placeholder:"Ocena 1-10", input_html: { min: 0, max: 10, class: 'custom-range'},required: false, error: false,label: false, as: :range
+  %p= f.input :body, placeholder:"Tekst....", required: false, error: false,label: false
+  %p= f.submit

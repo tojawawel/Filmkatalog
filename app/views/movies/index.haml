@@ -22,7 +22,7 @@
           %td.text-center= movie.genre
           %td.text-center= movie.director
           %td.text-center= movie.country_name
-          %td.text-center= sprintf('%.1f', movie.comments.average(:rate).to_i)
+          %td.text-center= sprintf('%.2f', movie.comments.average(:rate).to_f)
           %td.text-center
             .btn-group{"aria-label" => "Basic example", role: "group"}
               =link_to 'Show movie', movie_path(movie), :class => "button btn btn-info"

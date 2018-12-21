@@ -13,7 +13,7 @@
         %th.text-center Rate
         %th.text-center Actions
     %tbody
-      - @favourites.each do |fav|
+      - current_user.favourites.each do |fav|
         %tr
           %td.text-center= fav.movie.name
           %td.text-center

@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: [:destroy, :edit, :update]
 
   def create
+    @comments = @movie.comments.page(params[:page])
     @comment = Comment.new(comment_params)
     @comment.movie = @movie
     @comment.user = current_user
@@ -11,7 +12,6 @@ class CommentsController < ApplicationController
     else
       render 'movies/show'
     end
-
   end
 
   def destroy

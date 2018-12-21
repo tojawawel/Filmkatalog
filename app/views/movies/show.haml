@@ -32,6 +32,10 @@
           -if current_user == @movie.user || current_user.try(:admin?)
             %a=link_to 'Edit this movie', edit_movie_path(@movie), class: "btn btn-primary"
             %a=link_to 'Delete this movie', movie_path(@movie), method: :delete, class: "btn btn-danger"
-%br
-  =render 'comments/comment'
-  =render 'comments/form'
+  %br
+    .col-4.offset-4
+      = render 'common/errors', model: @comment
+      = render 'comments/comment'
+      %h2.text-center
+        Add comment
+      =render 'comments/form'

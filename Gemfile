@@ -19,6 +19,7 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails'
 gem 'jquery'
 gem 'devise'
+gem 'kaminari'
 
 group :development, :test do
   gem 'pry-rails'

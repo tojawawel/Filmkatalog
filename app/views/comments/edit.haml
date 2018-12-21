@@ -1,2 +1,5 @@
-%h2 Edit comment
-= render 'comments/form', model: @comment
+.col-4.offset-4
+  = render 'common/errors', model: @comment
+  %br
+  %h2 Edit comment
+  = render 'comments/form', model: @comment

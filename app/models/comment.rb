@@ -3,4 +3,5 @@ class Comment < ApplicationRecord
   validates :body ,presence: true, length: { minimum:5}
   belongs_to :movie
   belongs_to :user
+  paginates_per 5
 end

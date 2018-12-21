@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :movies
-  has_many :comments
+  has_many :movies, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :favourites
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
