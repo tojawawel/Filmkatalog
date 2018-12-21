@@ -12,3 +12,13 @@
  *
  */
  @import "bootstrap";
+
+ .round-image-50 {
+    background-color: white;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}

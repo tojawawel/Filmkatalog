@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'jquery'
 gem 'devise'
 gem 'kaminari'
+gem "paperclip", "~> 6.0.0"
 
 group :development, :test do
   gem 'pry-rails'

@@ -6,6 +6,7 @@
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = f.error_notification
       %form
+        = f.input :avatar, as: :file
         = f.input :first_name, required: false, autofocus: true
         = f.input :last_name, required: false, autofocus: true
         = f.input :email, required: false, autofocus: true
@@ -15,8 +16,5 @@
         = f.input :password,hint: "leave it blank if you don't want to change it",required: false,  input_html: { autocomplete: "new-password" }
         = f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" }
         = f.input :current_password, hint: "we need your current password to confirm your changes", required: false, input_html: { autocomplete: "current-password" }
-      .form-actions
-        = f.button :submit, "Update"
-    %h3 Cancel my account
-    %p
-      Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+        .form-actions
+          = f.button :submit, "Update"

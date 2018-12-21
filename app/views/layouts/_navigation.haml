@@ -14,6 +14,8 @@
         %a=link_to 'Create genre', new_genre_path, class: 'nav-link'
     %ul.navbar-nav.ml-auto
       - if user_signed_in?
+        %li.round-image-50
+          = image_tag current_user.avatar.url(:thumb)
         %li.nav-item.dropdown
           %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
             = current_user.first_name
