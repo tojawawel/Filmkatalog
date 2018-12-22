@@ -34,5 +34,4 @@ class GenresController < ApplicationController
   def set_genre
     @genre = genre.find(params[:id])
   end
-
 end

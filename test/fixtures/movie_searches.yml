@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  keywords: MyString
+  genre: MyString
+  director: MyString
+  min_length: 1
+  max_length: 1
+
+two:
+  keywords: MyString
+  genre: MyString
+  director: MyString
+  min_length: 1
+  max_length: 1

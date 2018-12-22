@@ -1,0 +1,34 @@
+%br
+%h1.text-center Search results
+%br
+- if @moviesearch.movie_search.empty?
+  %h2.text-center No results!
+- else
+  .container
+    %table.table.table-hover.table-bordered
+      %thead
+        %tr
+          %th.text-center Title
+          %th.text-center Length
+          %th.text-center Genre
+          %th.text-center Director
+          %th.text-center Country
+          %th.text-center Rate
+          %th.text-center Actions
+      %tbody
+        - @moviesearch.movie_search.each do |movie|
+          %tr
+            %td.text-center= movie.name
+            %td.text-center
+              =movie.length
+              minutes
+            %td.text-center= movie.genre
+            %td.text-center= movie.director
+            %td.text-center= movie.country_name
+            %td.text-center= sprintf('%.2f', movie.comments.average(:rate).to_f)
+            %td.text-center
+              .btn-group{"aria-label" => "Basic example", role: "group"}
+                =link_to 'Show movie', movie_path(movie), :class => "button btn btn-info"
+                -if current_user == movie.user || current_user.try(:admin?)
+                  =link_to 'Edit movie', edit_movie_path(movie), :class => "button btn btn-primary"
+                  =link_to 'Delete', movie_path(movie), method: :delete, data: {confirm: "You sure?"},:class => "button btn btn-danger"

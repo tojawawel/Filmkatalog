@@ -10,6 +10,7 @@
           = text_field_tag :term, params[:term]
           %span.input-group-btn
             = submit_tag "Search", name:nil, class: "btn btn-default"
+      %a=link_to 'Advanced search', new_movie_search_path, class: 'nav-link'
       -if current_user.try(:admin?)
         %a=link_to 'Create genre', new_genre_path, class: 'nav-link'
     %ul.navbar-nav.ml-auto

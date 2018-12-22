@@ -1,0 +1,21 @@
+.container
+  .col-5.offset-3
+    %br
+    %h1.text-center Advanced movie search
+    = simple_form_for @moviesearch do |f|
+      %form
+        .row
+          .form-group.col-6
+            %p=f.input :keywords, required: false, error: false
+        .row
+          .form-group.col-6
+            %p=f.input :genre, collection: @genres, required: false, error: false
+        .row
+          .form-group.col-6
+            %p=f.input :director, required: false, error: false
+        .row
+          .form-group.col-3
+            %p=f.input :min_length, input_html: { min: 0},required: false, error: false, label: "Minimum movie length"
+          .form-group.col-3
+            %p=f.input :min_length, input_html: { min: 0},required: false, error: false, label: "Maximum movie length"
+        = f.button :submit, 'Search'
