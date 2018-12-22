@@ -11,6 +11,8 @@
           .form-group.col-6
             %p=f.input :name, required: false, error: false
         .row
+          = f.input :cover, as: :file
+        .row
           .form-group.col-12
             %p=f.input :premiere_date, start_year: 1895, required: false, error: false
         .row

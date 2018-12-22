@@ -15,7 +15,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
 gem 'country_select'
 gem 'haml'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap'
 gem 'jquery-rails'
 gem 'jquery'
 gem 'devise'
@@ -25,7 +25,6 @@ gem "paperclip", "~> 6.0.0"
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
-
 end
 
 group :development do

@@ -6,6 +6,8 @@
           = @movie.name
         .card-body
           %p.card-text
+          = image_tag @movie.cover.url(:cover)
+          %p.card-text
             %strong Release date:
             = @movie.premiere_date.strftime("%d.%m.%Y")
           %p.card-text
