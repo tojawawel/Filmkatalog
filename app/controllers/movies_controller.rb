@@ -4,7 +4,13 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @movies = Movie.search(params[:term])
+    search = params[:term].present? ? (params[:term]) : nil
+    @movies = if search
+    # Movie.where('name LIKE ?', "%#{term}%")
+      Movie.search(search, fields: [:name], misspellings: {edit_distance: 3})
+    else
+      Movie.all
+    end
   end
 
   def new

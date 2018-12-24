@@ -21,6 +21,7 @@ gem 'jquery'
 gem 'devise'
 gem 'kaminari'
 gem "paperclip", "~> 6.0.0"
+gem 'searchkick'
 
 group :development, :test do
   gem 'pry-rails'

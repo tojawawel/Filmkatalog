@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  searchkick word_start: [:name]
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_attached_file :cover, styles: { :cover => "500x300" }
@@ -17,11 +18,12 @@ class Movie < ApplicationRecord
     iso_country.translations[I18n.locale.to_s] || iso_country.name
   end
 
-  def self.search(term)
-    if term
-      where('name LIKE ?', "%#{term}%")
-    else
-      all
-    end
-  end
+  # def self.search
+  #   if term
+  #     # where('name LIKE ?', "%#{term}%")
+  #     search(search)
+  #   else
+  #     all
+  #   end
+  # end
 end
