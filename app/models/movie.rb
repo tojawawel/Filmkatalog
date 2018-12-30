@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
   searchkick word_start: [:name]
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable
   has_attached_file :cover, styles: { :cover => "500x300" }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/
 

@@ -10,18 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_22_112223) do
+ActiveRecord::Schema.define(version: 2018_12_27_174804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer "rate"
+    t.bigint "user_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.integer "parent_id"
     t.text "body"
-    t.bigint "movie_id"
+    t.integer "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "movie_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["movie_id"], name: "index_comments_on_movie_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end

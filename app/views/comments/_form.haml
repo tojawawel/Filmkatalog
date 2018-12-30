@@ -1,6 +1,6 @@
-= simple_form_for [@movie, @comment] do |f|
-  %p= f.input :movie_id, :as => :hidden, required: false
-  %p
-    = f.input :rate, placeholder:"Ocena 1-10", input_html: { min: 0, max: 10, class: 'custom-range'},required: false, error: false,label: false, as: :range
-  %p= f.input :body, placeholder:"Tekst....", required: false, error: false,label: false
-  %p= f.submit
+= simple_form_for [commentable, @comment], html: { class: local_assigns[:class], data: { target: local_assigns[:target] } } do |f|
+  = f.text_area :body, placeholder: "Add a comment", class: "form-control"
+  = f.number_field :rate, placeholder: "Add rate", class: "form-control"
+  = f.hidden_field :parent_id, value: local_assigns[:parent_id]
+  = f.hidden_field :movie_id
+  = f.submit class: "btn btn-primary"

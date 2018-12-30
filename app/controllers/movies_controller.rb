@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @comments = @movie.comments.page(params[:page])
+    @comments = @movie.comments.where(parent_id: nil).page(params[:page])
     @comment = Comment.new
     @favourite_exists = Favourite.where(movie: @movie, user: current_user).empty? ? false : true
   end

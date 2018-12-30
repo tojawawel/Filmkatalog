@@ -1,14 +1,35 @@
-- @comments.each do |comment|
-  .card.text-center
-    .card-body
+- nesting = local_assigns.fetch(:nesting, 1)
+- local_assigns[:max_nesting]
+.card.text-center
+  .card-body
+    -if comment.deleted?
+      %h5.card-title
+      [deleted]
+      %h4
+      Rate: [deleted]
+      %p.card-text
+      [deleted]
+      %h6.card-subtitle.mb-2.text-muted= comment.created_at.strftime("%m/%d/%y %H:%M")
+    -else
       %h5.card-title= comment.user.full_name
       %h4
       Rate:
       = comment.rate
       %p.card-text= simple_format(comment.body)
       %h6.card-subtitle.mb-2.text-muted= comment.created_at.strftime("%m/%d/%y %H:%M")
-      -if current_user == comment.user || current_user.try(:admin?)
-        %a.card-link=link_to "Delete", movie_comment_path(movie_id: comment.movie_id, id: comment.id), method: :delete, data: {confirm: "Pewniak?"}, class: "btn btn-danger"
-        %a.card-link=link_to 'Edit', edit_movie_comment_path(movie_id: comment.movie.id, id: comment.id), class: "btn btn-primary"
-  %br
-=paginate @comments
+    -if (current_user == comment.user || current_user.try(:admin?)) && !comment.deleted?
+      %a.card-link=link_to "Delete", [comment.commentable, comment], method: :delete, data: {confirm: "Pewniak?"}, class: "btn btn-danger"
+      %a.card-link=link_to 'Edit', edit_movie_comment_path(comment.commentable, comment), class: "btn btn-primary"
+    -if user_signed_in?
+      %div{"data-controller" => "reply"}
+        %small
+        = link_to "Reply", "#", data: { action: "click->reply#toggle" } unless comment.deleted?
+        = render partial: "comments/form", locals: {                     |
+          commentable: comment.commentable,                              |
+          parent_id: reply_to_comment_id(comment, nesting, max_nesting), |
+          class: "mt-4 d-none",                                          |
+          target: "reply.form"                                           |
+        }                                                                |
+        = tag.div id: "#{dom_id(comment)}_comments" do
+          = render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting]
+%br

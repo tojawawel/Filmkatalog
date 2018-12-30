@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'movies#index'
   resources :movies do
-    resources :comments
+    resources :comments, module: :movies
   end
   resources :genres
   resources :movie_searches
