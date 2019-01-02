@@ -23,6 +23,7 @@ gem 'kaminari'
 gem "paperclip", "~> 6.0.0"
 gem 'searchkick'
 gem 'webpacker', '~> 3.5'
+gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
 
 group :development, :test do
   gem 'pry-rails'
