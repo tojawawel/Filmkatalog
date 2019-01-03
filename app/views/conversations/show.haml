@@ -1,0 +1,10 @@
+%h1=@conversation.subject
+-@conversation.receipts_for(current_user).each do |receipt|
+  %div
+    =receipt.message.sender.full_name
+    =receipt.message.body
+
+= form_tag conversation_messages_path(@conversation), method: :post do
+  %div
+    = text_area_tag :body
+  = submit_tag
