@@ -37,9 +37,9 @@
   %br
     .col-4.offset-4
       #comments
-        = render 'common/errors', model: @comment
-        = render @comments, max_nesting: 2
-        -# = render 'comments/comment'
+        = render partial: 'common/errors', locals: {model: @comment}
+        %br
+        = render partial: '/comments/comment', collection: @comments, locals: {max_nesting: 2}
       -if user_signed_in?
         %h2.text-center
           Add comment

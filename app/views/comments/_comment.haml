@@ -17,13 +17,13 @@
       = comment.rate
       %p.card-text= simple_format(comment.body)
       %h6.card-subtitle.mb-2.text-muted= comment.created_at.strftime("%m/%d/%y %H:%M")
-    -if (current_user == comment.user || current_user.try(:admin?)) && !comment.deleted?
+    -if (current_user == comment.user || current_user.try(:admin?))
       %a.card-link=link_to "Delete", [comment.commentable, comment], method: :delete, data: {confirm: "Pewniak?"}, class: "btn btn-danger"
       %a.card-link=link_to 'Edit', edit_movie_comment_path(comment.commentable, comment), class: "btn btn-primary"
     -if user_signed_in?
       %div{"data-controller" => "reply"}
         %small
-        = link_to "Reply", "#", data: { action: "click->reply#toggle" } unless comment.deleted?
+        = link_to "Reply", "#", data: { action: "click->reply#toggle" }
         = render partial: "comments/form", locals: {                     |
           commentable: comment.commentable,                              |
           parent_id: reply_to_comment_id(comment, nesting, max_nesting), |

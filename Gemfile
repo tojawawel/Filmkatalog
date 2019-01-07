@@ -25,6 +25,10 @@ gem 'searchkick'
 gem 'webpacker'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
 gem 'mailboxer'
+gem 'jquery-ui-rails'
+gem 'bootstrap-typeahead-rails'
+
+
 
 group :development, :test do
   gem 'pry-rails'

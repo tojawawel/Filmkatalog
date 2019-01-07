@@ -17,4 +17,28 @@
 //= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require jquery-ui
+//= require bootstrap-typeahead-rails
 //= require_tree .
+
+(function() {
+  jQuery(function() {
+    return $("#term").autocomplete({
+      source: "/movies/autocomplete",
+      minLength: 2
+    });
+  });
+
+}).call(this);
+
+var movies = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+    url: '/movies/autocomplete?term=%QUERY',
+    wildcard: '%QUERY'
+  }
+});
+$('#term').typeahead(null, {
+  source: movies
+});

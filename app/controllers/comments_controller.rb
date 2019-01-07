@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
        format.js
      end
    else
-     # redirect_to @commentable, alert: "Something went wrong"
      render 'movies/show'
    end
  end
@@ -50,6 +49,3 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.find(params[:id])
   end
 end
-
-
-# @comment = @movie.comments.find(params[:id])

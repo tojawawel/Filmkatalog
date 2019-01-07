@@ -14,7 +14,7 @@ class FavouritesController < ApplicationController
     end
     respond_to do |format|
       format.html {}
-      format.js {}
+      format.js { render "update", layout:false }
     end
   end
 end

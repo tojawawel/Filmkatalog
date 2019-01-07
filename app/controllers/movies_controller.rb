@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
     search = params[:term].present? ? (params[:term]) : nil
     @movies = if search
     # Movie.where('name LIKE ?', "%#{term}%")
-      Movie.search(search, fields: [:name], misspellings: {edit_distance: 3})
+      Movie.search(search, fields: [:name], match: :word_start)
     else
       Movie.all
     end
@@ -50,6 +50,16 @@ class MoviesController < ApplicationController
     @movie.destroy
     flash[:warning] = 'Movie was successfully destroyed'
     redirect_to movies_path
+  end
+
+  def autocomplete
+    render json: Movie.search(params[:term], {
+      fields: ["name"],
+      match: :word_start,
+      limit: 10,
+      load: false,
+      misspellings: {below: 5}
+    }).map(&:name)
   end
 
   private

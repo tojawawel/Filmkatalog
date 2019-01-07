@@ -2,7 +2,8 @@ class Comment < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :commentable, polymorphic: true
   belongs_to :parent, optional: true, class_name: "Comment"
-  validates :rate ,presence: true, numericality: { greater_than:0,less_or_equal_than:10,  only_integer: true }
+  has_many :children, class_name: "Comment", foreign_key: :parent_id, dependent: :destroy
+  validates :rate ,presence: true, numericality: { greater_than:0, less_than_or_equal_to: 10, only_integer: true }
   validates :body ,presence: true, length: { minimum:5}
   belongs_to :movie
   paginates_per 5
@@ -11,10 +12,10 @@ class Comment < ApplicationRecord
       Comment.where(commentable: commentable, parent_id: id)
     end
 
-    def destroy
-      update(user: nil, body: nil, rate: nil)
-    end
-
+    # def destroy
+    #   update(user: nil, body: nil, rate: nil)
+    # end
+    #
     def deleted?
       user.nil?
     end
